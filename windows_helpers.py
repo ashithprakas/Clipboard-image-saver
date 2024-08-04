@@ -1,5 +1,5 @@
 from windows_toasts import Toast, WindowsToaster
-from PIL.ImageGrab import grabclipboard , Image
+from PIL.ImageGrab import grabclipboard 
 from win32clipboard import IsClipboardFormatAvailable
 import os
 
