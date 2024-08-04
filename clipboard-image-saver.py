@@ -9,12 +9,12 @@ if os.name =='nt' :
     show_notification,is_image_present,get_image_from_clipboard,\
     get_pixels_from_image,save_image_to_directory
 
-delay:int = configs.MAX_DELAY_SECONDS
+delay = configs.MAX_DELAY_SECONDS
 show_notification('Clipboard Image Saver is running')
 
 old_hash = 0
 while True:
-    # delay = min(delay + 1, configs.MAX_DELAY_SECONDS)
+    delay = min(delay + 1, configs.MAX_DELAY_SECONDS)
     try:
         if not is_image_present():
             continue
@@ -28,11 +28,11 @@ while True:
             continue
        
         old_hash = new_hash
-        timestamp = tuple(datetime.now().strftime('%Y.%m.%d_%H.%M.%S'))
+        timestamp = datetime.now().strftime('%Y.%m.%d_%H.%M.%S')
 
-        # delay = max(delay // 2, configs.MIN_DELAY_SECONDS)
-        save_image_to_directory(image, IMAGE_SAVE_DIRECTORY, timestamp)
+        delay = max(delay // 2, configs.MIN_DELAY_SECONDS)
+        save_image_to_directory(image, IMAGE_SAVE_DIRECTORY, configs.IMAGE_SAVE_PREFIX,timestamp)
 
     except Exception as e :
-        print('error',e.args[0])
+        continue
         

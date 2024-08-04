@@ -18,11 +18,10 @@ def get_image_from_clipboard():
 def get_pixels_from_image(image):
     return image.getdata()
 
-def save_image_to_directory(image, save_directory, timestamp):
+def save_image_to_directory(image, save_directory, imagePrefix,timestamp):
     if isinstance(save_directory, tuple):
         save_directory = ''.join(save_directory)
         
-    filename = f"image_{ ''.join(timestamp) }.png"
+    filename = f"{imagePrefix}{ timestamp }.png"
     full_path = os.path.join(save_directory, filename)
-
     image.save(full_path, 'PNG')
