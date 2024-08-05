@@ -7,7 +7,7 @@ set SHORTCUT_NAME=ClipboardImageSaver
 set STARTUP_FOLDER=%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup
 
 REM Create the shortcut
-powershell -Command "$s=(New-Object -COM WScript.Shell).CreateShortcut('%STARTUP_FOLDER%\%SHORTCUT_NAME%.lnk');$s.TargetPath='%CD%\start.bat';$s.Save()"
+powershell -Command "$s=(New-Object -COM WScript.Shell).CreateShortcut('%STARTUP_FOLDER%\%SHORTCUT_NAME%.lnk');$s.TargetPath='%CD%\start.bat';$s.WorkingDirectory='%CD%';$s.Save()"
 
 echo Installation complete. Shortcut created in the Startup folder.
 
