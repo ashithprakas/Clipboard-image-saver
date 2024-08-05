@@ -9,6 +9,10 @@ if os.name =='nt' :
     show_notification,is_image_present,get_image_from_clipboard,\
     get_pixels_from_image,save_image_to_directory
 
+pid_file = 'scripts.pid'
+with open(pid_file,'w') as file:
+    file.write(str(os.getpid()))
+
 delay = configs.MAX_DELAY_SECONDS
 show_notification('Clipboard Image Saver is running')
 
