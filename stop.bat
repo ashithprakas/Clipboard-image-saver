@@ -1,12 +1,16 @@
 @echo off
+REM Define the path to the directory containing the PID file
+set "TEMP_DIR=%TEMP%\clipboard_image_saver.temp"
+set "PID_FILE=%TEMP_DIR%\clipboard_image_saver.pid"
+
 REM Check if PID file exists
-if not exist scripts.pid (
+if not exist "%PID_FILE%" (
     echo PID file not found.
     exit /b 1
 )
 
 REM Read PID from file
-set /p PID=<scripts.pid
+set /p PID=<"%PID_FILE%"
 
 REM Validate that PID is not empty
 if "%PID%"=="" (
@@ -24,7 +28,7 @@ if %ERRORLEVEL% neq 0 (
 )
 
 REM Remove PID file
-del scripts.pid
+del "%PID_FILE%"
 
 echo Process terminated.
 pause
