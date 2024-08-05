@@ -31,4 +31,3 @@ REM Remove PID file
 del "%PID_FILE%"
 
 echo Process terminated.
-pause
